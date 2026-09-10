@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Welcome!</title>
+  <link rel="icon" type="image/png" href="output-onlinepngtools_pixel.png">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .corner-gif {
+      flex-shrink: 0;
+      max-width: min(220px, 25vw);
+      height: auto;
+      opacity: 0.5;
+      transition: opacity 0.2s ease;
+    }
+
+    .corner-gifs {
+      position: fixed;
+      left: 1rem;
+      bottom: 1rem;
+      display: flex;
+      align-items: flex-end;
+      gap: 0.5rem;
+      flex-wrap: nowrap;
+    }
+
+    .corner-gifs img {
+      width: min(90px, 18vw);
+    }
+
+    .corner-gifs img[src$=".svg"] {
+      width: min(67.5px, 13.5vw);
+    }
+
+    .corner-gifs img:hover {
+      opacity: 1;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="animated-bg" aria-hidden="true"></div>
+  <main class="enter-center">
+    <img class="enter-art" src="megatii_transparent.png" alt="Alex art" title="art by @SUBL1MINALITY">
+    <div class="enter-panel">
+      <div class="info-box">
+        <p>PAGE DESIGNED FOR DESKTOP USERS</p>
+        <p>This page is full of bullshit, it may contain offensive or inappropriate content like explicit, sexual or violent content. It is not recommended for minors but do whatever you want i guess, enter at your own risk.</p>
+      </div>
+      <a class="enter-btn musics" href="home.html">Enter</a>
+    </div>
+  </main>
+  <div class="corner-gifs" aria-label="Decorative icons">
+    <img class="corner-gif" src="Censor_NC17a.gif" alt="">
+    <img class="corner-gif" src="pencil-svgrepo-com.svg" alt="">
+    <img class="corner-gif" src="compact-disc-svgrepo-com.svg" alt="">
+    <img class="corner-gif" src="radioactive-svgrepo-com.svg" alt="">
+  </div>
+</body>
+</html>

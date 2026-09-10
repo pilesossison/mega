@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MEGA / MAX</title>
+  <link rel="icon" type="image/png" href="output-onlinepngtools_pixel.png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+    :root { --red: #d33b32; --gold: #f2c94c; --green: #238653; --ink: #18241e; --cream: #fff5cf; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background-color: var(--cream);
+      background-image: linear-gradient(90deg, rgba(211,59,50,.12) 50%, transparent 50%), linear-gradient(rgba(35,134,83,.12) 50%, transparent 50%);
+      background-size: 44px 44px;
+      font-family: 'Press Start 2P', monospace;
+      cursor: crosshair;
+      overflow-x: hidden;
+    }
+    .page { width: min(100% - 2rem, 980px); margin: 0 auto; padding: 2rem 0 5rem; }
+    .masthead { display: flex; align-items: end; justify-content: space-between; gap: 1rem; border: 4px solid var(--ink); padding: 1rem 1.25rem; background: var(--gold); box-shadow: 8px 8px 0 var(--ink); }
+    .eyebrow { margin: 0 0 .6rem; color: var(--red); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(2rem, 7vw, 4.5rem); line-height: 1.05; text-transform: uppercase; text-shadow: 4px 4px 0 var(--cream); }
+    .badge { flex: 0 0 auto; padding: .55rem .65rem; color: var(--cream); background: var(--green); border: 3px solid var(--ink); font-size: 11px; transform: rotate(3deg); }
+    .stage { position: relative; display: grid; grid-template-columns: minmax(0, 44%) minmax(0, 56%); align-items: center; min-height: 650px; margin-top: 2.5rem; border: 4px solid var(--ink); background: var(--green); box-shadow: 8px 8px 0 var(--ink); overflow: hidden; }
+    .stage::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(135deg, transparent 0 26px, rgba(255,245,207,.12) 26px 30px); pointer-events: none; }
+    .copy { position: relative; z-index: 1; padding: 2rem; }
+    .copy p { max-width: 18rem; margin: 1rem 0 0; font-size: 1.25rem; line-height: 1.3; }
+    .flag { display: flex; width: 100%; height: 1rem; margin-top: 2rem; border: 3px solid var(--ink); }
+    .flag span:nth-child(1), .flag span:nth-child(3) { flex: 1; background: var(--red); }
+    .flag span:nth-child(2) { flex: 1; background: var(--gold); }
+    .portrait { position: relative; z-index: 1; align-self: end; justify-self: center; width: 600px; max-width: none; max-height: 760px; object-fit: contain; object-position: bottom; image-rendering: pixelated; filter: contrast(1.12) saturate(1.15) drop-shadow(10px 10px 0 rgba(255,20,147,.75)); }
+    .back-button {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      padding: .75rem 1rem;
+      color: var(--cream);
+      background: var(--red);
+      border: 3px solid var(--ink);
+      box-shadow: 4px 4px 0 var(--ink);
+      text-decoration: none;
+      font: 12px 'Press Start 2P', monospace;
+    }
+    .back-button:hover {
+      color: var(--ink);
+      background: var(--gold);
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0 var(--ink);
+    }
+
+    @media (max-width: 680px) {
+      .page { padding-top: 1rem; }
+      .masthead { align-items: start; flex-direction: column; }
+      .badge { align-self: end; }
+      .stage { grid-template-columns: 1fr; min-height: 760px; }
+      .copy { padding: 1.5rem; }
+      .portrait { width: 520px; max-height: 560px; }
+    }
+
+    body { display: grid; place-items: center; background: #000 url('tumblr_p8qtyq91451wr2a6bo1_250.png') repeat; background-size: 160px 160px; color: #18241e; }
+    @keyframes waveShift { 0% { background-position: 0 0, 50px 0, 100px 0, 150px 0; } 100% { background-position: -800px 0, -750px 0, -700px 0, -650px 0; } }
+    body::before { display: none; content: ''; position: fixed; inset: 0; z-index: -2; background: 
+      repeating-linear-gradient(90deg, 
+        transparent 0px, transparent 80px, 
+        rgba(0, 255, 150, 0.35) 80px, rgba(0, 255, 150, 0.35) 160px
+      ),
+      repeating-linear-gradient(90deg,
+        transparent 0px, transparent 70px,
+        rgba(100, 200, 255, 0.35) 70px, rgba(100, 200, 255, 0.35) 150px
+      ),
+      repeating-linear-gradient(90deg,
+        transparent 0px, transparent 90px,
+        rgba(255, 100, 200, 0.35) 90px, rgba(255, 100, 200, 0.35) 170px
+      ),
+      repeating-linear-gradient(90deg,
+        transparent 0px, transparent 75px,
+        rgba(0, 200, 255, 0.35) 75px, rgba(0, 200, 255, 0.35) 155px
+      );
+      background-size: 800px 300px, 800px 280px, 800px 320px, 800px 290px;
+      background-position: 0 0%, 50px 20%, 100px 40%, 150px 60%;
+      background-attachment: fixed;
+      filter: contrast(1.35) saturate(1.3) brightness(1.05);
+      animation: waveShift 15s linear infinite;
+    }
+    body::after { display: none; content: ''; position: fixed; inset: 0; z-index: -1; background: rgba(9, 11, 24, .22); pointer-events: none; }
+    .page { width: 100%; margin: 0; padding: 0; }
+    .masthead, .copy, .back-button { display: none; }
+    .stage { display: block; width: min(850px, 100vw); height: auto; margin: 0 auto; border: 0; background: radial-gradient(circle at 50% 15%, #30343b 0 2px, transparent 3px 14px), #24272c; background-size: 28px 28px; box-shadow: 0 0 0 3px #111, 0 0 30px rgba(255, 20, 147, .5); position: relative; }
+    .stage::before { display: none; }
+    .portrait { display: block; width: min(100vw, 700px); height: 100vh; max-height: none; margin: 0 auto; object-fit: contain; image-rendering: pixelated; filter: contrast(1.12) saturate(1.15) drop-shadow(10px 10px 0 #ff1493); }
+    .overlay-image { position: absolute; top: 0; left: 50%; z-index: 2; width: min(100vw, 700px); height: 100vh; object-fit: contain; image-rendering: pixelated; transform: translateX(-50%); transition: opacity .25s ease; pointer-events: none; }
+    .portrait:hover ~ .overlay-image { opacity: 0; }
+    .music-widget { position: fixed; right: 2rem; bottom: 14rem; z-index: 5; width: 280px; transform: none; }
+    .music-hover-zone { position: absolute; right: 0; bottom: 3.2rem; width: 100%; height: .8rem; }
+    .music-trigger { display: block; width: max-content; margin: 0 auto; padding: .7rem 1rem; color: #fff; background: #078ee8; border: 3px solid #fff; box-shadow: 5px 5px 0 #ff1493; font: .7rem 'Press Start 2P', monospace; text-transform: uppercase; }
+    .music-trigger img { display: block; width: 100%; height: 100%; object-fit: contain; image-rendering: auto; filter: drop-shadow(5px 5px 0 #ff1493); transition: transform .2s ease, filter .2s ease; }
+    .music-player { width: 100%; margin-bottom: .8rem; padding: 1rem; color: #fff; background: #111; border: 3px solid #111; box-shadow: 6px 6px 0 #ff1493; opacity: 0; pointer-events: none; transform: translateY(12px) rotate(-2deg); transition: opacity .25s ease, transform .25s ease; }
+    .music-widget:has(.music-trigger:hover) .music-player, .music-widget:has(.music-hover-zone:hover) .music-player, .music-widget:has(.music-player:hover) .music-player, .music-widget:focus-within .music-player { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .music-player h2 { margin: 0 0 .75rem; color: #078ee8; font: .75rem 'Press Start 2P', monospace; text-transform: uppercase; }
+    .music-player audio { width: 100%; height: 36px; }
+    .song-list { max-height: 150px; margin: .75rem 0 0; padding: 0 .35rem 0 0; overflow-y: auto; list-style: none; }
+    .song-list li { margin-bottom: .4rem; }
+    .song-list li:last-child { margin-bottom: 0; }
+    .music-player, .music-player h2, .side-box { font-family: 'Press Start 2P', monospace; font-style: normal; }
+    .music-player h2 { font-weight: 700; }
+    .song-list button { padding: .45rem .5rem; color: #111; background: #fff; border: 2px solid #fff; font: 400 .75rem sans-serif; cursor: pointer; }
+    .song-list button:hover, .song-list button.active { color: #111; background: #078ee8; border-color: #078ee8; }
+    .back-button { display: block; position: fixed; top: 1rem; left: 1rem; right: auto; bottom: auto; z-index: 4; padding: .7rem .85rem; color: #fff; background: #078ee8; border: 3px solid #fff; box-shadow: 4px 4px 0 #ff1493; text-decoration: none; font: .65rem 'Press Start 2P', monospace; }
+    .back-button:hover { color: #fff; background: #ff1493; }
+    .bandetto-stickers { position: absolute; width: 100%; height: 100%; inset: 0; z-index: 1; pointer-events: none; }
+    .bandetto-sticker { position: absolute; width: 120px; height: auto; image-rendering: pixelated; filter: drop-shadow(3px 3px 0 rgba(255,20,147,.4)); }
+    @keyframes stickerFloat { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(4px, -6px); } }
+    .bandetto-sticker:nth-child(1) { top: 10%; left: 5%; width: 100px; animation: stickerFloat 4s ease-in-out infinite; }
+    .bandetto-sticker:nth-child(2) { top: 55%; right: 8%; width: 110px; animation: stickerFloat 4.8s ease-in-out .6s infinite reverse; }
+    .shaker-decorations { position: fixed; inset: 0; z-index: 4; pointer-events: none; }
+    .shaker-decoration { position: absolute; width: 110px; height: 110px; object-fit: contain; pointer-events: auto; filter: drop-shadow(4px 4px 0 #ff1493); transition: transform .35s ease, filter .35s ease; animation: shakerFloat 7s ease-in-out infinite; will-change: translate; }
+    .shaker-decoration:hover { filter: drop-shadow(5px 5px 0 #078ee8); }
+    .shaker-decoration:nth-child(1) { top: 18%; left: 3%; transform: rotate(-12deg); }
+    .shaker-decoration:nth-child(2) { top: 66%; left: 8%; transform: rotate(9deg); animation-delay: -1.4s; }
+    .shaker-decoration:nth-child(3) { top: 10%; right: 5%; transform: rotate(14deg); animation-delay: -2.1s; }
+    .shaker-decoration:nth-child(4) { top: 70%; right: 9%; transform: rotate(-8deg); animation-delay: -3.2s; }
+    @keyframes shakerFloat { 0%, 100% { translate: 0 0; } 50% { translate: 0 -8px; } }
+    .shaker-info { position: fixed; left: 2rem; top: 50%; z-index: 3; width: 220px; padding: 1rem; color: #fff; background: #24272c; border: 3px solid #fff; box-shadow: 6px 6px 0 #078ee8; font: .65rem 'Press Start 2P', monospace; opacity: 0; transform: translateY(10px); pointer-events: none; transition: opacity .2s ease, transform .2s ease; }
+    .shaker-info.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .shaker-info:nth-of-type(1) { left: 3%; top: calc(14% + 120px); }
+    .shaker-info:nth-of-type(2) { left: 8%; top: auto; bottom: calc(38% + 1rem); }
+    .shaker-info:nth-of-type(3) { right: 5%; left: auto; top: calc(6% + 120px); }
+    .shaker-info:nth-of-type(4) { right: 9%; left: auto; top: calc(70% + 120px); }
+    .shaker-info h2 { margin: 0 0 .8rem; padding-bottom: .6rem; color: #ff1493; border-bottom: 2px solid #078ee8; font-size: .7rem; }
+    .shaker-info p { margin: 0; line-height: 1.6; }
+    .side-box { position: fixed; right: 2rem; bottom: 2rem; z-index: 3; width: 280px; max-height: calc(100vh - 4rem); padding: 1.5rem; color: #fff; background: radial-gradient(circle at 50% 15%, #30343b 0 2px, transparent 3px 14px), #24272c; background-size: 28px 28px; border: 3px solid #fff; box-shadow: 6px 6px 0 #ff1493; font: .7rem 'Press Start 2P', monospace; overflow-y: auto; }
+    .side-box h2 { margin: 0 0 1rem; padding-bottom: 0.8rem; border-bottom: 2px solid #078ee8; color: #078ee8; font-size: .8rem; text-transform: uppercase; }
+    .side-box-section { margin-bottom: 1rem; padding-bottom: 0.8rem; border-bottom: 1px solid rgba(255, 255, 255, .2); }
+    .side-box-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .side-box-section label { display: block; color: #078ee8; font-size: .6rem; text-transform: uppercase; margin-bottom: .3rem; }
+    .side-box-section p { margin: 0; font-size: .65rem; line-height: 1.5; }
+    .drawing-gallery { width: min(850px, 100vw); margin: 3rem auto 0; padding: 2rem; color: #fff; background: #111; border: 3px solid #fff; box-shadow: 8px 8px 0 #ff1493; }
+    .drawing-gallery h2 { margin: 0 0 .7rem; color: #078ee8; font-size: clamp(1rem, 3vw, 1.5rem); text-transform: uppercase; }
+    .drawing-gallery > p { margin: 0 0 1.5rem; color: #fff; font: .65rem/1.6 sans-serif; }
+    .drawing-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .drawing { position: relative; margin: 0; padding: .5rem; background: #24272c; border: 2px solid #078ee8; box-shadow: 4px 4px 0 #ff1493; }
+    .drawing::after { content: attr(data-tooltip); position: absolute; left: 50%; bottom: calc(100% + .7rem); z-index: 3; width: max-content; max-width: 18rem; padding: .65rem .75rem; color: #111; background: #fff; border: 2px solid #078ee8; box-shadow: 3px 3px 0 #ff1493; font: .55rem/1.4 'Press Start 2P', monospace; text-align: center; text-transform: uppercase; opacity: 0; pointer-events: none; transform: translate(-50%, .4rem); transition: opacity .2s ease, transform .2s ease; }
+    .drawing:hover::after, .drawing:focus-within::after { opacity: 1; transform: translate(-50%, 0); }
+    .drawing img { display: block; width: 100%; aspect-ratio: 1; object-fit: contain; background: #000; image-rendering: pixelated; }
+    .drawing-placeholder { display: grid; place-items: center; width: 100%; aspect-ratio: 1; padding: 1rem; color: #078ee8; background: repeating-linear-gradient(135deg, #17191d 0 10px, #24272c 10px 20px); text-align: center; font: .6rem/1.7 'Press Start 2P', monospace; }
+    .drawing figcaption { display: none; }
+    @media (max-width: 680px) {
+      .drawing-gallery { margin-top: 2rem; padding: 1rem; }
+      .drawing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="stage" aria-label="Pixel art portrait of Rgeger">
+      <div class="bandetto-stickers">
+        <img class="bandetto-sticker" src="Bandettobestpills.png" alt="Bandetto sticker">
+        <img class="bandetto-sticker" src="Bandettobestpills (1).png" alt="Bandetto sticker">
+      </div>
+      <img class="portrait" src="rgeger.png" alt="Rgeger, a dark-furred character with large ears and mismatched eyes">
+      <img class="overlay-image" src="rgedfgfdfgger.png" alt="">
+      <div class="music-widget">
+        <div class="music-player" aria-label="Favorite songs player">
+          <h2>favorite songs</h2>
+          <audio id="song-player" controls preload="metadata" src="love is orange.mp3"></audio>
+          <ul class="song-list">
+            <li><button type="button" data-song="love is orange.mp3">love is orange</button></li>
+            <li><button type="button" data-song="Death Grips - Takyon (Death Yon).mp3">takyon</button></li>
+            <li><button type="button" data-song="oui/01 - The Quick Brown Fox - Coward Killing Time.mp3">the quick brown fox - coward killing time</button></li>
+            <li><button type="button" data-song="oui/02 - Lapfoxduccs - Mayhem - BEST OF LAPFOX VOL 4- It's Murder - 06 It's Murder.mp3">mayhem - it's murder</button></li>
+            <li><button type="button" data-song="oui/03 - dumb_fluff_a$$ - Stag Party - Renard feat. Futret.mp3">renard - stag party</button></li>
+            <li><button type="button" data-song="oui/04 - Roma Ninkovich - 18 - Thebaicum Immortal.mp3">roma ninkovich - thebaicum immortal</button></li>
+            <li><button type="button" data-song="oui/05 - kardoras - KITCALIBER - DEVIL [D.FREQ.CRUSH].mp3">kitcaliber - devil</button></li>
+            <li><button type="button" data-song="oui/06 - Mindless Self Indulgence - Golden I.mp3">MSI - golden i</button></li>
+            <li><button type="button" data-song="oui/07 - sys painy - 人間のパクリ-鏡音リン - Copy of Human feat. Kagamine Rin.mp3">nazoJ - copy of human</button></li>
+            <li><button type="button" data-song="oui/08 - the_living_myth - 某国のハロウィン - Lost land's Halloween - 鏡音リン by 謎J - nazoJ.mp3">nazoJ - halloween</button></li>
+            <li><button type="button" data-song="oui/09 - Zapayase - Nanahoshi Orchestra - タランチュラ (Tarantula) feat. Hatsune Miku.mp3">nanahoshi - tarantula</button></li>
+            <li><button type="button" data-song="oui/10 - 0 - カプセル - フユウ feat 裏命・星界 (CAPSULE - Fuyuu feat RIME・SEKAI).mp3">capsule - fuyuu</button></li>
+            <li><button type="button" data-song="oui/11 - Queen Of Hatred - BLUNDERER!!-重音テト - by 犬ドリンク.mp3">queen of hatred - blunderer</button></li>
+            <li><button type="button" data-song="oui/12 - Sanol - Limp Bizkit-My Way.mp3">limp bizkit - my way</button></li>
+            <li><button type="button" data-song="oui/13 - Willy Rodriguez - Vampira.mp3">willy rodriguez - vampira</button></li>
+            <li><button type="button" data-song="oui/14 - Bal Baller - Beauty Salon - Remastered.mp3">manfred minnich - beauty salon</button></li>
+            <li><button type="button" data-song="oui/15 - Robin Buyse - Brianstorm - Arctic Monkeys.mp3">arctic monkeys - brianstorm</button></li>
+            <li><button type="button" data-song="oui/16 - Slowcords 3 - Jamiroquai - Do You Know Where You're Coming From- (1996).mp3">jamiroquai - do you know where you're coming from</button></li>
+            <li><button type="button" data-song="oui/17 - Infected Mushroom - 10. Change the Formality.mp3">infected mushroom - change the formality</button></li>
+            <li><button type="button" data-song="oui/18 - RadRoadkill - Speedcore Fuckoka (畜法)--Bokusatsu Shoujo Koubou.mp3">speedcore fukoka</button></li>
+            <li><button type="button" data-song="oui/19 - 保科 もも - 27 ｍ１ｄｙ Ｆｅｓｔｉｖａｌ（ＴＯＫＹＯ ＳＴＹＬＥ ＳＰＥＥＤＣＯＲＥ）.mp3.mp3">tokyo style speedcore</button></li>
+          </ul>
+        </div>
+        <span class="music-hover-zone" aria-hidden="true"></span>
+        <span class="music-trigger">favorite songs</span>
+      </div>
+    </section>
+    <section class="drawing-gallery" aria-labelledby="drawing-gallery-title">
+      <h2 id="drawing-gallery-title">drawings archive</h2>
+      <div class="drawing-grid">
+        <figure class="drawing" data-tooltip="009" title="009">
+          <img src="drawingsd/009.png" alt="Drawing 009">
+          <figcaption>009</figcaption>
+        </figure>
+        <figure class="drawing" data-tooltip="animated drawing 01" title="animated drawing 01">
+          <img src="drawingsd/109963033_Yyl7weEyfEFQ4ls.gif" alt="Animated drawing 01">
+          <figcaption>animated 01</figcaption>
+        </figure>
+        <figure class="drawing" data-tooltip="animated drawing 02" title="animated drawing 02">
+          <img src="drawingsd/118640404_Q4FAIgjg352o6Ny.gif" alt="Animated drawing 02">
+          <figcaption>animated 02</figcaption>
+        </figure>
+        <figure class="drawing" data-tooltip="character drawing 01" title="character drawing 01">
+          <img src="drawingsd/6lC0IoLXhOccsJO5rOpce6nJzBFgT8o4xpsScXie9DRtDkv3Zv9ncpkVCegY (1).png" alt="Character drawing 01">
+          <figcaption>character 01</figcaption>
+        </figure>
+        <figure class="drawing" data-tooltip="character drawing 02" title="character drawing 02">
+          <img src="drawingsd/bOn9Io74wPdEICbBcFZKWehOnZxgIccmytduQwGzxwwOM1FjzseGcdR0jHK7.jpg" alt="Character drawing 02">
+          <figcaption>new drawing</figcaption>
+        </figure>
+        <figure class="drawing" data-tooltip="design sans titre" title="design sans titre">
+          <img src="drawingsd/Design sans titre.png" alt="Design sans titre drawing">
+          <figcaption>new drawing</figcaption>
+        </figure>
+        <figure class="drawing" data-tooltip="character drawing 03" title="character drawing 03">
+          <img src="drawingsd/GQGPcHYZcV2xcQ15ZKGaZflBOpXsCBuASCMk3BCatvAuzvoT304pIR00YBGe.jpeg" alt="Character drawing 03">
+          <figcaption>new drawing</figcaption>
+        </figure>
+        <figure class="drawing" data-tooltip="phone drawing 01" title="phone drawing 01">
+          <img src="drawingsd/IMG_1837.png" alt="Phone drawing 01">
+          <figcaption>new drawing</figcaption>
+        </figure>
+        <figure class="drawing" data-tooltip="phone drawing 02" title="phone drawing 02">
+          <img src="drawingsd/IMG_2056.jpg" alt="Phone drawing 02">
+          <figcaption>new drawing</figcaption>
+        </figure>
+        <figure class="drawing" data-tooltip="character drawing 04" title="character drawing 04">
+          <img src="drawingsd/ipYdTe1Br8DLSldn3CVQRVD4RIWWAK5hCazAyPHVwyY9662IV48ubGBj3WJS.png" alt="Character drawing 04">
+          <figcaption>new drawing</figcaption>
+        </figure>
+        <figure class="drawing" data-tooltip="character drawing 05" title="character drawing 05">
+          <img src="drawingsd/Q4VceVJVEwpB6NOtWSk8cxzLzfBqXRIFZg2FZKsNFBhGusnMbpv0WUo6A0Gu.png" alt="Character drawing 05">
+          <figcaption>new drawing</figcaption>
+        </figure>
+        <figure class="drawing" data-tooltip="untitled drawing 106" title="untitled drawing 106">
+          <img src="drawingsd/Untitled106_20250419131833.png" alt="Untitled drawing 106">
+          <figcaption>new drawing</figcaption>
+        </figure>
+        <figure class="drawing" data-tooltip="untitled drawing 178" title="untitled drawing 178">
+          <img src="drawingsd/Untitled178_20260812235041.png" alt="Untitled drawing 178">
+          <figcaption>new drawing</figcaption>
+        </figure>
+        <figure class="drawing" data-tooltip="untitled drawing 27" title="untitled drawing 27">
+          <img src="drawingsd/Untitled27_20260807150001.png" alt="Untitled drawing 27">
+          <figcaption>new drawing</figcaption>
+        </figure>
+        <figure class="drawing" data-tooltip="untitled drawing 361" title="untitled drawing 361">
+          <img src="drawingsd/Untitled361_20260426114352.png" alt="Untitled drawing 361">
+          <figcaption>new drawing</figcaption>
+        </figure>
+        <figure class="drawing" data-tooltip="character drawing 06" title="character drawing 06">
+          <img src="drawingsd/ZVxU9fRd5LAnDOanqRbfHBYyoAQvnagsojKeJKPKcPF12aUz5qTCwvLWFvwj.png" alt="Character drawing 06">
+          <figcaption>new drawing</figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+  <div class="shaker-decorations" aria-hidden="true">
+    <img class="shaker-decoration" src="shakerinside (1).png" alt="">
+    <img class="shaker-decoration" src="shakerinside (1).png" alt="">
+    <img class="shaker-decoration" src="shakerinside (1).png" alt="">
+  </div>
+  <aside class="shaker-info" aria-live="polite">
+    <h2>body style</h2>
+    <p>the artstyle / body can vary depending on the artstyle you're going for and the best option for you to choose, they can also be a taur.</p>
+  </aside>
+  <aside class="shaker-info" aria-live="polite">
+    <h2>clothing</h2>
+    <p>clothing can also depend on request and the artists preferences in the drawing.</p>
+  </aside>
+  <aside class="shaker-info" aria-live="polite">
+    <h2>haircut</h2>
+    <p>again, do whatever you want with the haircut, you have artistic freedom!</p>
+  </aside>
+  <a class="back-button" href="home.html">BACK</a>
+  <div class="side-box">
+    <h2>info_box.exe</h2>
+    <div class="side-box-section">
+      <label>THE MAN</label>
+      <p>Mega / Max / Dragibus</p>
+    </div>
+    <div class="side-box-section">
+      <label>About the fucker</label>
+      <p>thats literally me,,,</p>
+    </div>
+    </div>
+  </div>
+  <script>
+    const songPlayer = document.querySelector('#song-player');
+    const songButtons = document.querySelectorAll('[data-song]');
+    const shakerDecorations = document.querySelectorAll('.shaker-decoration');
+    const shakerInfoBoxes = document.querySelectorAll('.shaker-info');
+
+    songButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        songPlayer.src = button.dataset.song;
+        songPlayer.play();
+        songButtons.forEach((item) => item.classList.remove('active'));
+        button.classList.add('active');
+      });
+    });
+
+    shakerDecorations.forEach((shaker, index) => {
+      shaker.addEventListener('mouseenter', () => shakerInfoBoxes[index].classList.add('active'));
+      shaker.addEventListener('mouseleave', () => shakerInfoBoxes[index].classList.remove('active'));
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme</title>
+    <link rel="icon" type="image/png" href="output-onlinepngtools_pixel.png">
+    <script>window.location.replace('enter.html');</script>
+ 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Questrial&family=Press+Start+2P&display=swap" rel="stylesheet">
+ 
+<style>
+ 
+*{
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+cursor: crosshair;
+}
+ 
+body{
+background-color: #fff;
+color: #000000;
+font-family: 'Press Start 2P', monospace;
+}
+ 
+.headerwrapper{
+display: flex;
+flex-direction: column;
+margin-bottom: 1rem;
+}
+ 
+ .header{
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 200px;
+background: #111;
+border-bottom: 4px solid #000;
+position: relative;
+overflow: hidden;
+}
+
+.header::before {
+content: "";
+position: absolute;
+inset: 0;
+background: linear-gradient(90deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.04) 50%, rgba(0,0,0,0.06) 100%);
+}
+ 
+.title{
+color: #fff;
+letter-spacing: 0.2rem;
+text-shadow: 0 0 10px #000000;
+font-family: 'Press Start 2P', monospace;
+position: relative;
+z-index: 1;
+display: block;
+padding: 1rem 2rem;
+border: 3px solid #fff;
+background: rgba(255,255,255,0.06);
+text-transform: uppercase;
+}
+ 
+.nav{
+background-color: #111;
+width: 100%;
+text-align: center;
+padding: 0.5rem 0 0.5rem 0;
+}
+ 
+.nav ul{
+display: flex;
+justify-content: space-around;
+}
+ 
+.nav li{
+display: inline;
+}
+ 
+.mainwrapper{
+display: flex;
+flex-direction: column;
+gap: 1rem;
+padding: 0 1rem 1rem 1rem;
+margin: 0 auto;
+max-width: 700px;
+}
+ 
+.box{
+background-color: #eee;
+}
+ 
+.subheaders{
+color: #fff;
+font-weight: normal;
+font-size: 18px;
+background-color: #111;
+}
+ 
+.last-header{
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 0.5rem;
+padding-right: 0.75rem;
+}
+ 
+.content{
+padding: 1rem;
+display: flex;
+flex-direction: column;
+gap: 1rem;
+font-family: 'Press Start 2P', monospace;
+}
+ 
+.content a:any-link{
+display: inline-block;
+text-decoration: underline;
+color: #78d8f5;
+background: linear-gradient(90deg, #ff8fcf, #78a9ff, #ff8fcf);
+background-size: 100% 100%;
+-webkit-background-clip: text;
+background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.content a:hover{
+color: #111;
+background: none;
+-webkit-text-fill-color: #111;
+animation: link-pop 0.25s ease-out both;
+text-shadow: none;
+}
+
+.nav a:any-link{
+color: white;
+text-decoration: none;
+background: none;
+-webkit-text-fill-color: white;
+animation: none;
+}
+ 
+#credit a{
+text-decoration: none;
+background: linear-gradient(90deg, rgba(250,31,193,1) 0%, rgba(29,85,255,1) 25%, rgba(13,246,252,1) 53%, rgba(0,255,102,1) 77%, rgba(251,255,56,1) 100%);
+background-size: 300% 100%;
+-webkit-background-clip: text;
+-moz-background-clip: text;
+-webkit-text-fill-color: transparent; 
+-moz-text-fill-color: transparent;
+animation: rainbow-link 4s linear infinite;
+}
+ 
+#credit a:visited{
+text-decoration: none;
+background: linear-gradient(90deg, rgba(250,31,193,1) 0%, rgba(29,85,255,1) 25%, rgba(13,246,252,1) 53%, rgba(0,255,102,1) 77%, rgba(251,255,56,1) 100%);
+background-size: 300% 100%;
+-webkit-background-clip: text;
+-moz-background-clip: text;
+-webkit-text-fill-color: transparent; 
+-moz-text-fill-color: transparent;
+animation: rainbow-link 4s linear infinite;
+}
+ 
+a:hover{
+font-style: italic;
+}
+ 
+a:active{
+font-style: italic;
+font-weight: bold;
+}
+ 
+.nav a:visited{
+text-decoration: none;
+color: white;
+-webkit-text-fill-color: white;
+}
+ 
+.nav-disabled{
+  pointer-events: none;
+  opacity: 0.45;
+  text-decoration: line-through;
+  cursor: crosshair;
+  color: #999 !important;
+  -webkit-text-fill-color: #999;
+  background: none;
+}
+
+@keyframes rainbow-link {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+
+@keyframes link-hover {
+  0% { transform: translateY(0) rotate(0deg); }
+  55% { transform: translateY(-3px) rotate(-2deg); }
+  100% { transform: translateY(-1px) rotate(1deg); }
+}
+
+@keyframes link-pop {
+  from { transform: translateY(0) scale(1); }
+  to { transform: translateY(-3px) scale(1.05); }
+}
+ 
+::-webkit-scrollbar{
+width: 6px; 
+}
+ 
+::-webkit-scrollbar-track{
+background: linear-gradient(180deg, rgba(250,31,193,1) 0%, rgba(29,85,255,1) 25%, rgba(13,246,252,1) 53%, rgba(0,255,102,1) 77%, rgba(251,255,56,1) 100%);
+}
+ 
+::-webkit-scrollbar-thumb{
+background-color: #111;
+}
+ 
+.blinkies {
+  display: inline-block;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.blinkies{
+display: inline-flex;
+gap: 0.2rem;
+color: #fff;
+animation: blinkies 0.7s steps(2, end) infinite;
+}
+
+@keyframes blinkies {
+  0%, 49% { opacity: 0.2; }
+  50%, 100% { opacity: 1; }
+}
+
+.page-doll{
+  position: fixed;
+  left: 20px;
+  bottom: 18px;
+  width: min(220px, 28vw);
+  height: auto;
+  z-index: 20;
+  pointer-events: auto;
+  opacity: 0.92;
+  filter: grayscale(0.2) contrast(1.05) saturate(0.8) drop-shadow(0 0 12px rgba(0,0,0,0.2));
+  transition: transform 0.2s ease, filter 0.2s ease, opacity 0.2s ease;
+}
+
+.page-doll:hover{
+  transform: translateY(-4px) scale(1.04);
+  filter: grayscale(1) contrast(1.2) saturate(0) drop-shadow(0 0 16px rgba(0,0,0,0.32));
+  opacity: 1;
+}
+.meet-man{
+  position: fixed;
+  left: 20px;
+  bottom: calc(18px + min(220px, 28vw));
+  z-index: 21;
+  width: min(220px, 28vw);
+  color: #111;
+  font-size: 0.65rem;
+  line-height: 1.4;
+  text-align: center;
+  pointer-events: none;
+}
+.meet-man b{display:block;font-size:1.2rem;line-height:1;}
+ 
+</style>
+ 
+</head>
+
+<body>
+  <div class="animated-bg" aria-hidden="true"></div>
+
+<div class="headerwrapper">
+ 
+<div class="header">
+<h1 class="title">%MEGA%</h1>
+</div>
+ 
+<div class="nav">
+<ul>
+          <li><a href="index.html" class="nav-disabled" aria-disabled="true">Home</a></li>
+<li><a href="art-portfolio.html">Art Portfolio</a></li>
+<li><a href="music.html">Music</a></li>
+<li><a href="commissions.html">Commissions</a></li>
+<li><a href="resources.html">Resources</a></li>
+<li><a href="links.html">Links</a></li>
+</ul>
+</div>
+ 
+</div>
+ 
+<div class="mainwrapper">
+ 
+<!-- BOX 1 -->
+<div class="box">
+<h3 class="subheaders">About myself <span class="blinkies" aria-hidden="true">✦✦✦</span></h3>
+<div class="content">
+<p>I'm alex an artist that makes drawings, music and a bunch of other stuff too, i enjoy making art, sound design and all. I like peeking through the littlest cracks to find interesting stuff on my little computer. Besides that i like video games like the majority of people that will come across this page and i'm obsessed with pokemon.</p>
+</div>
+</div>
+ 
+<!-- BOX 2 -->
+<div class="box">
+<h3 class="subheaders">but what do i do here? <span class="blinkies" aria-hidden="true">✦✦✦</span></h3>
+<div class="content">
+<p>My goal on this website is to reassemble all of my work into one place for everyone to see and make fun of because thats what the internet is for nowadays but also to showcase my art and prices for commissions and things like that. </p>
+</div>
+</div>
+ 
+<!-- BOX 3 -->
+<div class="box">
+<h3 class="subheaders last-header">so what can i find on your shitty page? <span class="blinkies" aria-hidden="true">✦✦✦</span></h3>
+<div class="content">
+<p>You can find on this website, my <a href="art-portfolio.html">art portofolio</a>, my <a href="music.html">music stuff</a> (i even put unfinished projects), my <a href="commissions.html">commissions</a> and prices, some <a href="resources.html">resources</a> that i use for my work and  <a href="links.html">links</a> to some of my socials</p>
+</div>
+</div>
+ 
+</div>
+
+  <a href="character.html" aria-label="View character page"><span class="meet-man">meet the man <b aria-hidden="true">&darr;</b></span><img class="page-doll" src="103599877_yPZXbSDLUPp89ui.gif" alt="Page doll" title="art by @bwuizl" onerror="this.style.display='none'"></a>
+ 
+</body>
+ 
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>portofolio</title>
+    <link rel="icon" type="image/png" href="output-onlinepngtools_pixel.png">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+      *{box-sizing:border-box;margin:0;padding:0}
+      body{background:#fff;color:#111;font-family:'Press Start 2P', monospace}
+      .headerwrapper{display:flex;flex-direction:column;margin-bottom:1rem}
+      .header{width:100%;display:flex;justify-content:center;align-items:center;height:200px;background:#111;border-bottom:4px solid #000;position:relative;overflow:hidden}
+      .header::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.04) 50%, rgba(0,0,0,0.06) 100%);}
+      .title{color:#fff;letter-spacing:0.2rem;text-shadow:0 0 10px #111;font-family:'Press Start 2P', monospace;position:relative;z-index:1;display:block;padding:1rem 2rem;border:3px solid #fff;background:rgba(255,255,255,0.06);text-transform:uppercase;}
+      .nav{background:#111;width:100%;text-align:center;padding:0.5rem 0}
+      .nav ul{display:flex;justify-content:space-around;list-style:none}
+      .nav li{display:inline}
+      .nav a{color:#fff;text-decoration:none}
+      .nav a:visited{color:#fff}
+      .nav-disabled{pointer-events:none;opacity:0.45;text-decoration:line-through;cursor:default;color:#999 !important}
+      .page-doll{position:fixed;left:20px;bottom:18px;width:min(220px,28vw);height:auto;z-index:20;pointer-events:auto;opacity:0.92;filter:grayscale(0.2) contrast(1.05) saturate(0.8) drop-shadow(0 0 12px rgba(0,0,0,0.2));transition:transform .2s ease,filter .2s ease,opacity .2s ease;}
+      .page-doll:hover{transform:translateY(-4px) scale(1.04);filter:grayscale(1) contrast(1.2) saturate(0) drop-shadow(0 0 16px rgba(0,0,0,0.32));opacity:1;}
+      .meet-man{position:fixed;left:20px;bottom:calc(18px + min(220px,28vw));z-index:21;width:min(220px,28vw);color:#111;font-size:.65rem;line-height:1.4;text-align:center;pointer-events:none;}
+      .meet-man b{display:block;font-size:1.2rem;line-height:1;}
+      .mainwrapper{display:block;padding:0 1rem 1rem;margin:0 auto;max-width:1100px}
+      .portfolio-layout{display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:1rem;align-items:start}
+      .portfolio-content{display:flex;flex-direction:column;gap:1rem;min-width:0}
+      .intro{background:#eee;padding:1rem;line-height:1.8}
+      .centered-intro{text-align:center}
+      .year-section{background:#eee;scroll-margin-top:1rem}
+      #year-2023{order:1}
+      #year-2024{order:2}
+      #year-2025{order:3}
+      #year-2026{order:4}
+      .year-heading{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.7rem 1rem;color:#fff;background:#111;font-size:1rem;cursor:pointer;list-style:none}
+      .year-heading::-webkit-details-marker{display:none}
+      .year-heading::after{content:'+';font-size:1.2rem;line-height:1}
+      details[open]>.year-heading::after{content:'-'}
+      .year-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem;padding:1rem}
+      .art-slot{aspect-ratio:1;border:3px dashed #111;background:#fff;display:grid;place-items:center;text-align:center;padding:.5rem;line-height:1.6;overflow:hidden}
+      .art-slot span{font-size:.55rem}
+      .art-slot{position:relative}
+      .art-slot img{width:100%;height:100%;object-fit:cover}
+      .art-lightbox{position:fixed;inset:0;z-index:100;display:grid;place-items:center;width:100%;height:100%;padding:2.5rem 1rem 1rem;background:rgba(0,0,0,.88);color:#fff}
+      .art-lightbox[hidden]{display:none}
+      .art-lightbox img{display:block;max-width:100%;max-height:80vh;width:auto;height:auto;margin:auto}
+      .lightbox-close{position:absolute;top:.5rem;right:.75rem;z-index:101;color:#fff;background:#111;border:2px solid #fff;padding:.25rem .5rem;font:inherit;font-size:1.25rem;cursor:pointer;pointer-events:auto}
+      .year-summary{position:sticky;top:1rem;background:#111;color:#fff;padding:1rem;border:3px solid #111}
+      .year-summary h2{font-size:.75rem;line-height:1.6;margin-bottom:.75rem}
+      .year-summary ul{display:flex;flex-direction:column;gap:.5rem;list-style:none}
+      .year-summary a:any-link{display:block;padding:.55rem;color:#fff;text-decoration:none;border:2px solid #fff;font-size:.65rem;text-align:center}
+      .year-summary a:hover{background:#fff;color:#111;font-style:normal}
+      @media (max-width:700px){.portfolio-layout{grid-template-columns:1fr}.year-summary{position:sticky;top:.5rem;z-index:5}.year-summary ul{display:grid;grid-template-columns:repeat(4,1fr)}.year-summary a{padding:.45rem .2rem}.year-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.year-heading{font-size:.8rem}}
+      .box{background:#eee}
+      .subheaders{color:#fff;font-weight:normal;font-size:18px;background:#111}
+      .content{padding:1rem;display:flex;flex-direction:column;gap:1rem}
+      a{text-decoration:underline;color:#000}
+      a:visited{color:#000}
+      .blinkies{display:inline-flex;gap:.2rem;animation:blinkies .7s steps(2,end) infinite}
+      @keyframes blinkies{0%,49%{opacity:.2}50%,100%{opacity:1}}
+    </style>
+  </head>
+  <body>
+    <div class="headerwrapper">
+      <div class="header"><h1 class="title">Banner</h1></div>
+      <div class="nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="art-portfolio.html" class="nav-disabled" aria-disabled="true">Art Portfolio</a></li>
+          <li><a href="music.html">Music</a></li>
+          <li><a href="commissions.html">Commissions</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="links.html">Links</a></li>
+        </ul>
+      </div>
+    </div>
+    <main class="mainwrapper">
+      <div class="portfolio-layout">
+        <div class="portfolio-content">
+          <section class="intro">
+            <p>My art! <span class="blinkies" aria-hidden="true">✦✦✦</span></p>
+            <p>all of my work is organized by year, have fun looking through thoses and see my shitty artstyle grow with the years! </p>
+          </section>
+
+          <section class="year-section" id="year-2026">
+            <details><summary class="year-heading">2026 <span class="blinkies" aria-hidden="true">✦✦✦</span></summary><div class="year-grid">
+              <!-- Put a direct image URL in data-image-url for any slot. -->
+              <div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/rgeger.png"><span>2026<br>ART 01</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/yiffiyiffyi.jpg"><span>2026<br>ART 02</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/Template_Comedy.png.png"><span>2026<br>ART 03</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/fdfd.jpg"><span>2026<br>ART 04</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/GRDRGGDR.jpg"><span>2026<br>ART 05</span></div>
+              <div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/tool1dd.jpg"><span>2026<br>ART 06</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/Sans_titre_2_20260616173512.jpg"><span>2026<br>ART 07</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/erfgzezsrtg.jpg"><span>2026<br>ART 08</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/fbddthdhftgdthf.jpg"><span>2026<br>ART 09</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/rgrtgh.jpg"><span>2026<br>ART 10</span></div>
+              <div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/xsx.jpg"><span>2026<br>ART 11</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/gyigyi.jpg"><span>2026<br>ART 12</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/eeee.png"><span>2026<br>ART 13</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/relax.png"><span>2026<br>ART 14</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/aaaaaazazea.png"><span>2026<br>ART 15</span></div>
+              <div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/IMG_3830.jpg"><span>2026<br>ART 16</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/IMG_3807.jpg"><span>2026<br>ART 17</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/IMG_3171.jpg"><span>2026<br>ART 18</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/IMG_3591.jpg"><span>2026<br>ART 19</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/IMG_3557.jpg"><span>2026<br>ART 20</span></div>
+              <div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/IMG_3373.jpg"><span>2026<br>ART 21</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/IMG_3224.jpg"><span>2026<br>ART 24</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/coffe.jpg"><span>2026<br>ART 25</span></div>
+              <div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/IMG_3231.jpg"><span>2026<br>ART 26</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/74FD17FF-E1BA-4719-B850-3034D0F355F0.jpg"><span>2026<br>ART 27</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/IMG_3362.jpg"><span>2026<br>ART 28</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/IMG_3251.jpg"><span>2026<br>ART 29</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2026/IMG_3246.jpg"><span>2026<br>ART 30</span></div>
+            </div>
+            </details>
+          </section>
+
+          <section class="year-section" id="year-2025">
+            <details><summary class="year-heading">2025 <span class="blinkies" aria-hidden="true">✦✦✦</span></summary><div class="year-grid">
+              <div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/hjkbhkvjvhjkb.jpg"><span>2025<br>ART 01</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/cum.png"><span>2025<br>ART 02</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/meag.png"><span>2025<br>ART 03</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/kkkk.png"><span>2025<br>ART 04</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/3d.jpg"><span>2025<br>ART 05</span></div>
+              <div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/caca%20pose%202%20bien%20ref%20.png"><span>2025<br>ART 06</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/2025_Crystals_Cazrd.png"><span>2025<br>ART 07</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/azaza.jpg"><span>2025<br>ART 08</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/bebebebee.jpg"><span>2025<br>ART 09</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/CHO.png"><span>2025<br>ART 10</span></div>
+              <div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/eeeee.jpg"><span>2025<br>ART 11</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/COSMICCCCC.jpg"><span>2025<br>ART 12</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/GRAH.jpg"><span>2025<br>ART 13</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/kkjkko.jpg"><span>2025<br>ART 14</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/OKAAAA.png"><span>2025<br>ART 15</span></div>
+              <div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/p.jpg"><span>2025<br>ART 16</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/ppl.jpg"><span>2025<br>ART 17</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/wowoowwo.jpg"><span>2025<br>ART 18</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/image.png"><span>2025<br>ART 19</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/dd.png"><span>2025<br>ART 20</span></div>
+              <div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/ddfszzef.png"><span>2025<br>ART 21</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/arashi.jpg"><span>2025<br>ART 22</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/bee4.png"><span>2025<br>ART 23</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/Ratty.png"><span>2025<br>ART 24</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/ehttheeth.png"><span>2025<br>ART 25</span></div>
+              <div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/gregregrger.png"><span>2025<br>ART 26</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/gndfrjtrt.png"><span>2025<br>ART 27</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/fzefzefze.png"><span>2025<br>ART 28</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/gnfntrfrth.png"><span>2025<br>ART 29</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/wowieeeee.png"><span>2025<br>ART 30</span></div>
+              <div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/gregreergrtettertr.png"><span>2025<br>ART 31</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/ftgynj%2Cn%2Chnhf.png"><span>2025<br>ART 32</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/nfgngfghhg.png"><span>2025<br>ART 33</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/hgfhgfh.png"><span>2025<br>ART 34</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/sdfdsfdfsdfsddfs.png"><span>2025<br>ART 35</span></div>
+              <div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/gregerrtrteertrt.png"><span>2025<br>ART 36</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/azeeazzeaazezeaeaz.png"><span>2025<br>ART 37</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/azezazeaeazazeazeeazaze.png"><span>2025<br>ART 38</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/zaeezaazerzarrrz.png"><span>2025<br>ART 39</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/xcvvcxvcxvcx.png"><span>2025<br>ART 40</span></div>
+              <div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/xcvcvxvcxvc.png"><span>2025<br>ART 41</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/nbvnb.png"><span>2025<br>ART 42</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/nnnn.png"><span>2025<br>ART 43</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/%2C%2C%2C%2C.png"><span>2025<br>ART 44</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/gggg.png"><span>2025<br>ART 45</span></div>
+              <div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/rdtrt.jpg"><span>2025<br>ART 46</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/jjjjj.jpg"><span>2025<br>ART 47</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/kkkkk.jpg"><span>2025<br>ART 48</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/nnn.jpg"><span>2025<br>ART 49</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2025/wwwx.jpg"><span>2025<br>ART 50</span></div>
+            </div>
+            </details>
+          </section>
+
+          <section class="year-section" id="year-2024">
+            <details><summary class="year-heading">2024 <span class="blinkies" aria-hidden="true">✦✦✦</span></summary><div class="year-grid">
+              <div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2024/reference%20sheet%20for%20niko.png"><span>2024<br>ART 01</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2024/.document_0.kra-autosave.png"><span>2024<br>ART 02</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2024/WOWO%20SHARKRPRPP.jpg"><span>2024<br>ART 03</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2024/Design%20sans%20titre%20(2).png"><span>2024<br>ART 04</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2024/Capture%20d'%C3%A9cran%202024-01-02%20205641.png"><span>2024<br>ART 05</span></div>
+              <div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2024/Capture%20d'%C3%A9cran%202023-11-29%20184508.png"><span>2024<br>ART 06</span></div>
+              <div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2024/Capture%20d'%C3%A9cran%202024-03-27%20143902.png"><span>2024<br>ART 07</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2024/Capture%20d'%C3%A9cran%202024-08-10%20185846.png"><span>2024<br>ART 08</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2024/Capture%20d'%C3%A9cran%202024-11-04%20000437.png"><span>2024<br>ART 09</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2024/Capture%20d'%C3%A9cran%202024-11-05%20221522.png"><span>2024<br>ART 10</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2024/Capture%20d'%C3%A9cran%202025-02-08%20191836.png"><span>2024<br>ART 11</span></div>
+            </div>
+            </details>
+          </section>
+
+          <section class="year-section" id="year-2023">
+            <details><summary class="year-heading">2023 <span class="blinkies" aria-hidden="true">✦✦✦</span></summary><div class="year-grid">
+              <div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2023/%2C%2C.png"><span>2023<br>ART 01</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2023/bat_on_should_pose_reference_tough_attitude_mad_by_adorkastock_de47uzf-414w-2x.jpg"><span>2023<br>ART 02</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2023/Capture%20d'%C3%A9cran%202023-09-16%20193209.png"><span>2023<br>ART 03</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2023/e6a532a1e5f3c7405712dc7675b2ee1f.png"><span>2023<br>ART 04</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2023/wut.png"><span>2023<br>ART 05</span></div>
+              <div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2023/t%C3%A9l%C3%A9charg%C3%A9.jpeg"><span>2023<br>ART 06</span></div>
+              <div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2023/bru.jpg"><span>2023<br>ART 07</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2023/C0Ll6bBUsAAFW8Z.jpg"><span>2023<br>ART 08</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2023/a6fdb02c6e9f14040a7f651ba14ec1c9_6_1.jpg"><span>2023<br>ART 09</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2023/j.jpg"><span>2023<br>ART 10</span></div><div class="art-slot" data-image-url="https://file.garden/ao3oCrgC0z_5dZHz/C%3A%5CUsers%5CAlex%5CPictures%5Cdrawings/2023/sans_nom_2.jpg"><span>2023<br>ART 11</span></div>
+            
+            </div>
+            </details>
+          </section>
+        </div>
+
+        <aside class="year-summary" aria-label="Portfolio years">
+          <h2>Summary</h2>
+          <ul>
+            <li><a href="#year-2023">2023</a></li>
+            <li><a href="#year-2024">2024</a></li>
+            <li><a href="#year-2025">2025</a></li>
+            <li><a href="#year-2026">2026</a></li>
+          </ul>
+        </aside>
+      </div>
+    </main>
+    <section class="intro centered-intro">
+            <p>And more to come! <span class="blinkies" aria-hidden="true">✦✦✦</span></p>
+          </section>
+    
+    <a href="character.html" aria-label="View character page"><span class="meet-man">meet the man <b aria-hidden="true">&darr;</b></span><img class="page-doll" src="103599877_yPZXbSDLUPp89ui.gif" alt="Page doll" title="art by @bwuizl" onerror="this.style.display='none'"></a>
+    <script>
+      const artLightbox = document.createElement('div');
+      const expandedArt = document.createElement('img');
+      const closeLightbox = document.createElement('button');
+      artLightbox.className = 'art-lightbox';
+      artLightbox.hidden = true;
+      artLightbox.tabIndex = -1;
+      closeLightbox.type = 'button';
+      closeLightbox.className = 'lightbox-close';
+      closeLightbox.textContent = 'X';
+      closeLightbox.setAttribute('aria-label', 'Close artwork');
+      artLightbox.append(closeLightbox, expandedArt);
+      document.body.appendChild(artLightbox);
+
+      document.querySelectorAll('.art-slot').forEach((slot) => {
+        const label = slot.querySelector('span');
+        const image = document.createElement('img');
+        image.alt = label.textContent.replace(/\s+/g, ' ');
+        const imageUrl = slot.dataset.imageUrl;
+        image.loading = 'lazy';
+        image.decoding = 'async';
+        image.hidden = !imageUrl;
+        label.hidden = Boolean(imageUrl);
+        if (imageUrl) image.dataset.src = imageUrl;
+        image.addEventListener('error', () => {
+          image.hidden = true;
+          label.hidden = false;
+        });
+        image.addEventListener('click', () => {
+          expandedArt.src = image.src;
+          expandedArt.alt = image.alt;
+          artLightbox.hidden = false;
+          artLightbox.style.display = 'grid';
+          artLightbox.focus();
+        });
+        slot.append(image);
+      });
+
+      document.querySelectorAll('.year-section details').forEach((year) => {
+        year.addEventListener('toggle', () => {
+          if (!year.open) return;
+          year.querySelectorAll('img[data-src]').forEach((image) => {
+            image.src = image.dataset.src;
+            delete image.dataset.src;
+          });
+        });
+      });
+
+      const hideLightbox = () => {
+        artLightbox.hidden = true;
+        artLightbox.style.display = 'none';
+        expandedArt.removeAttribute('src');
+      };
+
+      closeLightbox.onclick = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        hideLightbox();
+      };
+      artLightbox.addEventListener('click', (event) => {
+        if (event.target !== expandedArt) hideLightbox();
+      });
+      const handleEscape = (event) => {
+        if (event.key === 'Escape' || event.code === 'Escape') {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          hideLightbox();
+        }
+      };
+      window.addEventListener('keydown', handleEscape, true);
+      document.addEventListener('keydown', handleEscape, true);
+    </script>
+  </body>
+</html>
